@@ -33,7 +33,9 @@ const main = () => {
     const size = process.argv[2]
     const pattern = /^\d+$/
     if (size && (!pattern.test(size) || parseInt(size) > 100000000)) {
-        console.log('Please provide a valid integer size lower than 100000000.')
+        console.log(
+            'Please provide a valid positive integer size lower than 100000000.'
+        )
         return
     }
     const [indexToFind, sortedList] = setupList(size)
