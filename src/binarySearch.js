@@ -14,7 +14,7 @@ export const binarySearch = (arr, item, count) => {
             const endTime = performance.now()
             const timeTaken = endTime - startTime
             console.log(
-                `=== Found the desired number after ${count} iterations and ${timeTaken.toFixed(
+                `=== Found the desired number with binary search after ${count} iterations and ${timeTaken.toFixed(
                     6
                 )} milliseconds.`
             )

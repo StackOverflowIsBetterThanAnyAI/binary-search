@@ -1,4 +1,5 @@
 import { binarySearch } from './src/binarySearch.js'
+import { linearSearch } from './src/linearSearch.js'
 import { setupList } from './src/setupList.js'
 
 const main = () => {
@@ -15,6 +16,7 @@ const main = () => {
     }
     const [indexToFind, list] = setupList(size)
     binarySearch(list, indexToFind, 0)
+    linearSearch(list, indexToFind)
 }
 
 main()
