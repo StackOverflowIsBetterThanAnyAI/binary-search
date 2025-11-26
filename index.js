@@ -1,4 +1,10 @@
-const sortListAscending = (arr) => {
+const formatSize = (size) => {
+    return size.toLocaleString('en-US')
+}
+
+const sortListSelectionSort = (arr) => {
+    const startTime = performance.now()
+
     let smallestIndex = 0
     let smallestValue = arr[0]
     for (let i = 0; i < arr.length; i++) {
@@ -15,25 +21,36 @@ const sortListAscending = (arr) => {
             arr[i] = smallestValue
         }
     }
-    console.log('List was sorted in ascending order.')
+
+    const endTime = performance.now()
+    const timeTaken = (endTime - startTime) / 1000
+    console.log(
+        `=== List was sorted with Selection Sort in ${timeTaken.toFixed(
+            6
+        )} seconds.\n`
+    )
     return arr
 }
 
 const setupList = (size) => {
-    const SIZE = size || 250000
+    const SIZE = size || 500000
     const indexToFind = Math.floor(Math.random() * SIZE)
     console.log(
-        `Searching for number ${indexToFind} in an initially shuffled list of size ${SIZE}.`
+        `=== Searching for number ${indexToFind} in an initially shuffled list of size ${formatSize(
+            parseInt(SIZE)
+        )}.\n`
     )
     const list = Array.from({ length: SIZE }, (_, i) => i).sort(
         () => Math.random() - 0.5
     )
-    console.log('List has been created and shuffled. Sorting list now.')
-    const sortedList = sortListAscending(list)
+    console.log('=== List has been created and shuffled. Sorting list now.\n')
+    const sortedList = sortListSelectionSort(list)
     return [indexToFind, sortedList]
 }
 
 const binarySearch = (arr, item, count) => {
+    const startTime = performance.now()
+
     let min = 0
     let middle = Math.floor(arr.length / 2)
     let max = arr.length - 1
@@ -44,7 +61,13 @@ const binarySearch = (arr, item, count) => {
         middle = Math.floor((min + max) / 2)
 
         if (item === arr[middle]) {
-            console.log(`Found ${item} after ${count} iterations.`)
+            const endTime = performance.now()
+            const timeTaken = endTime - startTime
+            console.log(
+                `=== Found the desired number after ${count} iterations and ${timeTaken.toFixed(
+                    6
+                )} milliseconds.`
+            )
             return
         } else if (item < arr[middle]) {
             max = middle - 1
@@ -54,20 +77,18 @@ const binarySearch = (arr, item, count) => {
     }
 }
 
-const main = () => {
+const main = (() => {
     const size = process.argv[2]
     const pattern = /^\d+$/
     if (
         size &&
-        (!pattern.test(size) || parseInt(size) > 250000 || parseInt(size) <= 0)
+        (!pattern.test(size) || parseInt(size) > 500000 || parseInt(size) <= 0)
     ) {
         console.log(
-            'Please provide a valid positive list size lower than 250,000.'
+            '=== Please provide a valid positive list size between 1 and 500,000.'
         )
         return
     }
     const [indexToFind, list] = setupList(size)
     binarySearch(list, indexToFind, 0)
-}
-
-main()
+})()
