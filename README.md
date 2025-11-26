@@ -1,12 +1,14 @@
 # Binary Search
 
-Search for a randomly generated number in an ordered list by applying binary search.
+Search for a randomly generated number in an initially shuffled list by making use of binary search.
 
-Use a custom list size or go with the default size of 100,000,000.
+In the first step, the list is sorted by using the Selection Sort algorithm. After that, binary search is applied to find the desired value.
+
+Use a custom list size or go with the default size of 250,000.
 
 ```
 
-// size: 100,000,000
+// size: 250,000
 node .
 
 // size: 100
