@@ -1,4 +1,5 @@
 import { formatSize } from './formatSize.js'
+import { sortListBubbleSort } from './sortListBubbleSort.js'
 import { sortListSelectionSort } from './sortListSelectionSort.js'
 
 export const setupList = (size) => {
@@ -13,6 +14,7 @@ export const setupList = (size) => {
         () => Math.random() - 0.5
     )
     console.log('=== List has been created and shuffled. Sorting list now.\n')
-    const sortedList = sortListSelectionSort(list)
+    const sortedList = sortListSelectionSort([...list])
+    sortListBubbleSort([...list])
     return [indexToFind, sortedList]
 }
