@@ -21,9 +21,9 @@ export const sortListSelectionSort = (arr) => {
     const endTime = performance.now()
     const timeTaken = (endTime - startTime) / 1000
     console.log(
-        `=== List was sorted with Selection Sort in ${timeTaken.toFixed(
+        `=== Shuffled list was sorted with Selection Sort in ${timeTaken.toFixed(
             6
-        )} seconds.\n`
+        )} seconds.`
     )
     return arr
 }
